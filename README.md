@@ -44,7 +44,7 @@ All the development and testing was done using these platforms:
  <!-- Style guidelines -->
 
 - Style guidelines:
-  - [pycodestyle (version 2.7.\*)](https://pypi.org/project/pycodestyle/)
+  - [pycodestyle (version 2.11.\*)](https://pypi.org/project/pycodestyle/)
   - [PEP8](https://pep8.org/)
 
 ## Installation
