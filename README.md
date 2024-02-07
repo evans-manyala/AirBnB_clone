@@ -24,13 +24,11 @@ The console is a command interpreter for clone AirBnb Project and it performs th
 
 ### Storage
 
-All the classes are handled by the `Storage` engine in the `FileStorage` Class.
+Classes are handled by the `Storage` engine in the `FileStorage` Class.
 
 ## Environment
 
-The following are the enviroment used to design, test and run the clone AirBnB console:
-
-All the development and testing was done using these platforms:
+The following are the enviroment used to design, test and run the clone AirBnB console. All the development and testing was done using these platforms:
 
 - OS Ubuntu 20.04 LTS and MacOs Ventura 13.6.4
 - Python 3.11.2 The editors used were VIM 8.1.2269
@@ -148,7 +146,7 @@ echo "python3 -m unittest discover tests" | bash
 
 ### run test in non-interactive mode
 
-To run the tests in non-interactive mode, and discover all the test, you can use the command:
+To perform the tests in non-interactive mode, use the command:
 
 ````bash
 python3 -m unittest discover tests```
