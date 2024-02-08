@@ -7,7 +7,10 @@ class Place(BaseModel):
     """Represent a place.
 
     Attributes:
+        latitude(float): Latitude location details.
+        longitude(float): Longitude location details.
         city_id(str): City id.
+        amenity_ids(list): List of Amenities available.
         user_id(str): User id.
         name(str): Name of place.
         description(str): Description about the place.
@@ -15,9 +18,6 @@ class Place(BaseModel):
         number_bathrooms(int): No. of bathrooms in the place.
         max_guest(int): Max no. of guests that can be accomodated.
         price_by_night(int): Price per night stay.
-        latitude(float): Latitude location details.
-        longitude(float): Longitude location details.
-        amenity_ids(list): List of Amenities available.
     """
 
     latitude = 0.0
@@ -28,5 +28,6 @@ class Place(BaseModel):
     name = ""
     description = ""
     max_guest = 0
-    price_by_night = 0
     number_rooms = 0
+    number_bathrooms = 0
+    price_by_night = 0
