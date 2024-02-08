@@ -23,21 +23,22 @@ def parser(arg):
             return [x.strip(",") for x in split(arg)]
         else:
             lexicon = split(arg[:square_brackets.span()[0]])
-            return_line = [x.strip(",") for x in lexicon]
-            return_line.append(square_brackets.group())
-            return return_line
+            re.search = [x.strip(",") for x in lexicon]
+            re.search.append(square_brackets.group())
+            return re.search
     else:
         lexicon = split(arg[:curly_brackets.span()[0]])
-        return_line = [x.strip(",") for x in lexicon]
-        return_line.append(curly_brackets.group())
-        return return_line
+        re.search = [x.strip(",") for x in lexicon]
+        re.search.append(curly_brackets.group())
+        return re.search
+
 
 class AirBnBCommand(cmd.Cmd):
     """
-    Defines the AirBnB Clone command interpreter.
+    Defines the AirBnB Clone cmd interpreter.
 
     Attributes:
-        prompt (str): The command prompt.
+        prompt (str): The cmd prompt.
     """
 
     prompt = "(hbnb) "
@@ -56,4 +57,27 @@ class AirBnBCommand(cmd.Cmd):
         Do nothing when the prompt is empty without any input.
         """
         pass
-    
+
+    def default(self, arg):
+        """
+        Define behavior for command module when
+        the input from the user is not valid
+        """
+        arg_dict = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
+        }
+        match = re.search(r"\.", arg)
+        if match is not None:
+            arg_list = [arg[:match.span()[0]], arg[match.span()[1]:]]
+            match = re.search(r"\((.*?)\)", arg_list[1])
+            if match is not None:
+                cmd = [arg_list[1][:match.span()[0]], match.group()[1:-1]]
+                if cmd[0] in arg_dict.keys():
+                    call = "{} {}".format(arg_list[0], cmd[1])
+                    return arg_dict[cmd[0]](call)
+        print("*** Unknown format: {}".format(arg))
+        return False
