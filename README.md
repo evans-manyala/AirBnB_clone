@@ -1,8 +1,6 @@
 # AirBnB_clone aka hbnb
 
-## AirBnB clone - The console
-
-### Table of contents
+## Table of contents
 
 - [Introduction](#Introduction)
 - [Environment](#Environment)
@@ -13,7 +11,7 @@
 
 ## Introduction
 
-This is a solo project to build a clone of [AirBnB](https://www.airbnb.com) for ALX SE Course and its known as hbnb.
+This is a solo project to build a clone (hbnb) of [AirBnB](https://www.airbnb.com) for ALX SE Course.
 
 The console is a command interpreter for clone AirBnb Project and it performs the following tasks:
 
@@ -24,14 +22,14 @@ The console is a command interpreter for clone AirBnb Project and it performs th
 
 ### Storage
 
-Classes are handled by the `Storage` engine in the `FileStorage` Class.
+Classes created are managed by the `Storage` engine in the `FileStorage` Class.
 
 ## Environment
 
 The following are the enviroment used to design, test and run the clone AirBnB console. All the development and testing was done using these platforms:
 
-- OS Ubuntu 20.04 LTS and MacOs Ventura 13.6.4
-- Python 3.11.2 The editors used were VIM 8.1.2269
+- MacOs Ventura 13.6.4 and OS Ubuntu 22.04 LTS
+- Python 3.11.2
 - VSCode 1.86
 - Vim 9.0
 - Code version control with Git 2.39.5
@@ -59,7 +57,7 @@ Change to the `AirBnb` directory and run the command:
 
 ### Execution
 
-In interactive mode
+For the interactive mode
 
 ```bash
 $ ./console.py
@@ -75,7 +73,7 @@ EOF  help  quit
 $
 ```
 
-in Non-interactive mode
+For the Non-interactive mode
 
 ```bash
 $ echo "help" | ./console.py
@@ -101,7 +99,7 @@ $
 
 ## Testing
 
-All the test are defined in the `tests` folder.
+For all the unit testing, these are defined in the `tests` folder.
 
 ### Documentation
 
