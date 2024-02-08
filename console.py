@@ -50,3 +50,10 @@ class AirBnBCommand(cmd.Cmd):
         "Amenity",
         "Review"
     }
+
+    def emptyline(self):
+        """
+        Do nothing when the prompt is empty without any input.
+        """
+        pass
+    
