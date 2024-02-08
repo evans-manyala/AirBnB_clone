@@ -31,7 +31,8 @@ def parser(arg):
         return_line = [x.strip(",") for x in lexicon]
         return_line.append(curly_brackets.group())
         return return_line
-class HBNBCommand(cmd.Cmd):
+
+class AirBnBCommand(cmd.Cmd):
     """
     Defines the AirBnB Clone command interpreter.
 
