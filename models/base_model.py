@@ -21,24 +21,24 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
         if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "created_at" or k == "updated_at":
-                    self.__dict__[k] = datetime.strptime(v, timeFormat)
+            for x, y in kwargs.items():
+                if x == "created_at" or x == "updated_at":
+                    self.__dict__[x] = datetime.strptime(y, timeFormat)
                 else:
-                    self.__dict__[k] = v
+                    self.__dict__[x] = y
         else:
             models.storage.new(self)
 
     def save(self):
-        """Update updated_at with the current datetime."""
+        """Update the current date and time."""
         self.updated_at = datetime.today()
         models.storage.save()
 
     def to_dict(self):
         """
-        Return the dictionary of the BaseModel.
+        Dictionary of the BaseModel.
 
-        Including the key or value pair __class__ name.
+        Include the key and value pair of the __class__ name.
         """
         returnDictionary = self.__dict__.copy()
         returnDictionary["created_at"] = self.created_at.isoformat()
