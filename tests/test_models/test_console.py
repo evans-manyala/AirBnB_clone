@@ -4,7 +4,7 @@ Class defintion for unittests
 
 
 Unittest classes:
-    
+
     TestAirBnBCommand_create
     TestAirBnBCommand_update
     TestAirBnBCommand_all
@@ -12,7 +12,6 @@ Unittest classes:
     TestAirBnBCommand_destroy
     TestAirBnBCommand_exit
     TestAirBnBCommand_show
-    
 """
 import os
 import sys
