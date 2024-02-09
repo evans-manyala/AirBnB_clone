@@ -81,3 +81,17 @@ class AirBnBCommand(cmd.Cmd):
                     return arg_dict[cmd[0]](call)
         print("*** Unknown format: {}".format(arg))
         return False
+
+    def exit(self, arg):
+        """
+        Command to quit or exit the program.
+        """
+        return True
+
+    def EOF(self, arg):
+        """
+        Process signal to quit the program reaches end of file.
+        """
+        print("")
+        return True
+
