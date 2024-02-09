@@ -203,8 +203,8 @@ class AirBnBCommand(cmd.Cmd):
         if len(arg_list) == 4:
             obj = obj_dict["{}.{}".format(arg_list[0], arg_list[1])]
             if arg_list[2] in obj.__class__.__dict__.keys():
-                valtype = type(obj.__class__.__dict__[arg_list[2]])
-                obj.__dict__[arg_list[2]] = valtype(arg_list[3])
+                valueType = type(obj.__class__.__dict__[arg_list[2]])
+                obj.__dict__[arg_list[2]] = valueType(arg_list[3])
             else:
                 obj.__dict__[arg_list[2]] = arg_list[3]
         elif type(eval(arg_list[2])) == dict:
@@ -212,8 +212,8 @@ class AirBnBCommand(cmd.Cmd):
             for k, v in eval(arg_list[2]).items():
                 if (k in obj.__class__.__dict__.keys() and
                         type(obj.__class__.__dict__[k]) in {str, int, float}):
-                    valtype = type(obj.__class__.__dict__[k])
-                    obj.__dict__[k] = valtype(v)
+                    valueType = type(obj.__class__.__dict__[k])
+                    obj.__dict__[k] = valueType(v)
                 else:
                     obj.__dict__[k] = v
         storage.save()
