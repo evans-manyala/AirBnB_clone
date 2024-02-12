@@ -252,7 +252,7 @@ class TestAirBnBCommand_show(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testShowMissingID_space(self):
-        correct = "** Class Class instance id missing **"
+        correct = "** Class Class Class instance id missing **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("show BaseModel"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -276,7 +276,7 @@ class TestAirBnBCommand_show(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testShowMissingID_dot(self):
-        correct = "** Class Class instance id missing **"
+        correct = "** Class Class Class instance id missing **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("BaseModel.show()"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -300,7 +300,7 @@ class TestAirBnBCommand_show(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testShowNoInstanceFoundSpaceNotation(self):
-        correct = "** no instance found **"
+        correct = "** No matching instance found **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("show BaseModel 1"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -324,7 +324,7 @@ class TestAirBnBCommand_show(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testShowNoInstanceFoundDotSpaceNotation(self):
-        correct = "** no instance found **"
+        correct = "** No matching instance found **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("BaseModel.show(1)"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -350,116 +350,116 @@ class TestAirBnBCommand_show(unittest.TestCase):
     def testShowObjSpaceNotation(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["BaseModel.{}".format(testID)]
-            command = "show BaseModel {}".format(testID)
+            obj = storage.all()["BaseModel.{}".format(test_ID)]
+            command = "show BaseModel {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create User"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["User.{}".format(testID)]
-            command = "show User {}".format(testID)
+            obj = storage.all()["User.{}".format(test_ID)]
+            command = "show User {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create State"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["State.{}".format(testID)]
-            command = "show State {}".format(testID)
+            obj = storage.all()["State.{}".format(test_ID)]
+            command = "show State {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Place"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Place.{}".format(testID)]
-            command = "show Place {}".format(testID)
+            obj = storage.all()["Place.{}".format(test_ID)]
+            command = "show Place {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create City"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["City.{}".format(testID)]
-            command = "show City {}".format(testID)
+            obj = storage.all()["City.{}".format(test_ID)]
+            command = "show City {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Amenity.{}".format(testID)]
-            command = "show Amenity {}".format(testID)
+            obj = storage.all()["Amenity.{}".format(test_ID)]
+            command = "show Amenity {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Review"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Review.{}".format(testID)]
-            command = "show Review {}".format(testID)
+            obj = storage.all()["Review.{}".format(test_ID)]
+            command = "show Review {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
 
     def testShowObjSpaceNotation(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["BaseModel.{}".format(testID)]
-            command = "BaseModel.show({})".format(testID)
+            obj = storage.all()["BaseModel.{}".format(test_ID)]
+            command = "BaseModel.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create User"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["User.{}".format(testID)]
-            command = "User.show({})".format(testID)
+            obj = storage.all()["User.{}".format(test_ID)]
+            command = "User.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create State"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["State.{}".format(testID)]
-            command = "State.show({})".format(testID)
+            obj = storage.all()["State.{}".format(test_ID)]
+            command = "State.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Place"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Place.{}".format(testID)]
-            command = "Place.show({})".format(testID)
+            obj = storage.all()["Place.{}".format(test_ID)]
+            command = "Place.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create City"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["City.{}".format(testID)]
-            command = "City.show({})".format(testID)
+            obj = storage.all()["City.{}".format(test_ID)]
+            command = "City.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Amenity.{}".format(testID)]
-            command = "Amenity.show({})".format(testID)
+            obj = storage.all()["Amenity.{}".format(test_ID)]
+            command = "Amenity.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Review"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Review.{}".format(testID)]
-            command = "Review.show({})".format(testID)
+            obj = storage.all()["Review.{}".format(test_ID)]
+            command = "Review.show({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertEqual(obj.__str__(), output.getvalue().strip())
 
@@ -508,7 +508,7 @@ class TestAirBnBCommand_destroy(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testDestroyIDMissingSpaceNotation(self):
-        correct = "** Class instance id missing **"
+        correct = "** Class Class instance id missing **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("destroy BaseModel"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -532,7 +532,7 @@ class TestAirBnBCommand_destroy(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testDestroyIDMissingDotNotation(self):
-        correct = "** Class instance id missing **"
+        correct = "** Class Class instance id missing **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("BaseModel.destroy()"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -556,7 +556,7 @@ class TestAirBnBCommand_destroy(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testDestroyInvalidIDSpaceNotation(self):
-        correct = "** no instance found **"
+        correct = "** No matching instance found **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("destroy BaseModel 1"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -580,7 +580,7 @@ class TestAirBnBCommand_destroy(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testDestroyInvalidDotNotation(self):
-        correct = "** no instance found **"
+        correct = "** No matching instance found **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("BaseModel.destroy(1)"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -606,115 +606,983 @@ class TestAirBnBCommand_destroy(unittest.TestCase):
     def testDestroyObjectsSpaceNotation(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["BaseModel.{}".format(testID)]
-            command = "destroy BaseModel {}".format(testID)
+            obj = storage.all()["BaseModel.{}".format(test_ID)]
+            command = "destroy BaseModel {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create User"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["User.{}".format(testID)]
-            command = "show User {}".format(testID)
+            obj = storage.all()["User.{}".format(test_ID)]
+            command = "show User {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create State"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["State.{}".format(testID)]
-            command = "show State {}".format(testID)
+            obj = storage.all()["State.{}".format(test_ID)]
+            command = "show State {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Place"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Place.{}".format(testID)]
-            command = "show Place {}".format(testID)
+            obj = storage.all()["Place.{}".format(test_ID)]
+            command = "show Place {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create City"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["City.{}".format(testID)]
-            command = "show City {}".format(testID)
+            obj = storage.all()["City.{}".format(test_ID)]
+            command = "show City {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Amenity.{}".format(testID)]
-            command = "show Amenity {}".format(testID)
+            obj = storage.all()["Amenity.{}".format(test_ID)]
+            command = "show Amenity {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Review"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Review.{}".format(testID)]
-            command = "show Review {}".format(testID)
+            obj = storage.all()["Review.{}".format(test_ID)]
+            command = "show Review {}".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
 
     def testDestroyObjectsDotNotation(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["BaseModel.{}".format(testID)]
-            command = "BaseModel.destroy({})".format(testID)
+            obj = storage.all()["BaseModel.{}".format(test_ID)]
+            command = "BaseModel.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create User"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["User.{}".format(testID)]
-            command = "User.destroy({})".format(testID)
+            obj = storage.all()["User.{}".format(test_ID)]
+            command = "User.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create State"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["State.{}".format(testID)]
-            command = "State.destroy({})".format(testID)
+            obj = storage.all()["State.{}".format(test_ID)]
+            command = "State.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Place"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Place.{}".format(testID)]
-            command = "Place.destroy({})".format(testID)
+            obj = storage.all()["Place.{}".format(test_ID)]
+            command = "Place.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create City"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["City.{}".format(testID)]
-            command = "City.destroy({})".format(testID)
+            obj = storage.all()["City.{}".format(test_ID)]
+            command = "City.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Amenity.{}".format(testID)]
-            command = "Amenity.destroy({})".format(testID)
+            obj = storage.all()["Amenity.{}".format(test_ID)]
+            command = "Amenity.destroy({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create Review"))
-            testID = output.getvalue().strip()
+            test_ID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
-            obj = storage.all()["Review.{}".format(testID)]
-            command = "Review.destory({})".format(testID)
+            obj = storage.all()["Review.{}".format(test_ID)]
+            command = "Review.destory({})".format(test_ID)
             self.assertFalse(AirBnBCommand().onecmd(command))
             self.assertNotIn(obj, storage.all())
+
+
+class TestAirBnBCommand_all(unittest.TestCase):
+    """Unit testing for  all of cmd interpreter."""
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+        FileStorage.__objects = {}
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testAllInvalidClass(self):
+        correct = "** Class does not exist **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all MyModel"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("MyModel.all()"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testAllObjectsSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            self.assertFalse(AirBnBCommand().onecmd("create Review"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all"))
+            self.assertIn("BaseModel", output.getvalue().strip())
+            self.assertIn("User", output.getvalue().strip())
+            self.assertIn("State", output.getvalue().strip())
+            self.assertIn("Place", output.getvalue().strip())
+            self.assertIn("City", output.getvalue().strip())
+            self.assertIn("Amenity", output.getvalue().strip())
+            self.assertIn("Review", output.getvalue().strip())
+
+    def testAllObjectsDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            self.assertFalse(AirBnBCommand().onecmd("create Review"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(".all()"))
+            self.assertIn("BaseModel", output.getvalue().strip())
+            self.assertIn("User", output.getvalue().strip())
+            self.assertIn("State", output.getvalue().strip())
+            self.assertIn("Place", output.getvalue().strip())
+            self.assertIn("City", output.getvalue().strip())
+            self.assertIn("Amenity", output.getvalue().strip())
+            self.assertIn("Review", output.getvalue().strip())
+
+    def testAllSingleObjectSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            self.assertFalse(AirBnBCommand().onecmd("create Review"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all BaseModel"))
+            self.assertIn("BaseModel", output.getvalue().strip())
+            self.assertNotIn("User", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all User"))
+            self.assertIn("User", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all State"))
+            self.assertIn("State", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all City"))
+            self.assertIn("City", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all Amenity"))
+            self.assertIn("Amenity", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all Place"))
+            self.assertIn("Place", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("all Review"))
+            self.assertIn("Review", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+
+    def testAllSingleObjectDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            self.assertFalse(AirBnBCommand().onecmd("create Review"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("BaseModel.all()"))
+            self.assertIn("BaseModel", output.getvalue().strip())
+            self.assertNotIn("User", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("User.all()"))
+            self.assertIn("User", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("State.all()"))
+            self.assertIn("State", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("City.all()"))
+            self.assertIn("City", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Amenity.all()"))
+            self.assertIn("Amenity", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Place.all()"))
+            self.assertIn("Place", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Review.all()"))
+            self.assertIn("Review", output.getvalue().strip())
+            self.assertNotIn("BaseModel", output.getvalue().strip())
+
+
+class TestAirBnBCommand_update(unittest.TestCase):
+    """
+    Unit testing for UPDATE command of the cmd interpreter.
+    """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+        FileStorage.__objects = {}
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testUpdateMissingClass(self):
+        correct = "** Missing class name **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(".update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateInvalidClass(self):
+        correct = "** Class does not exist **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update MyModel"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("MyModel.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateMissingInstanceIDSpaceNotation(self):
+        correct = "** Class instance id missing **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update BaseModel"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update User"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update State"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update City"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Amenity"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Place"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Review"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateMissingIDDotNotation(self):
+        correct = "** Class instance id missing **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("BaseModel.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("User.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("State.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("City.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Amenity.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Place.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Review.update()"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateInvalidIDSpaceNotation(self):
+        correct = "** No matching instance found **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update BaseModel 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update User 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update State 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update City 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Amenity 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Place 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("update Review 1"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateInvalidIDDotNotation(self):
+        correct = "** No matching instance found **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("BaseModel.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("User.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("State.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("City.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Amenity.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Place.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Review.update(1)"))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateMissingAttrNameSpaceNotation(self):
+        correct = "** Attribute name not found **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update BaseModel {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update User {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update State {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update City {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update Amenity {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "update Place {}".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def test_update_missing_attr_name_dot_notation(self):
+        correct = "** Attribute name not found **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "BaseModel.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "User.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "State.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "City.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "Amenity.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+            test_Id = output.getvalue().strip()
+            test_Cmd = "Place.update({})".format(test_Id)
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateMissingAttributeValueSpaceNotation(self):
+        correct = "** value missing **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update BaseModel {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update User {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update State {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update City {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update Amenity {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update Place {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "update Review {} attr_name".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateMissingAttributeValueDotNotation(self):
+        correct = "** value missing **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "BaseModel.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "User.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "State.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "City.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "Amenity.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "Place.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            test_Id = output.getvalue().strip()
+        with patch("sys.stdout", new=StringIO()) as output:
+            test_Cmd = "Review.update({}, attr_name)".format(test_Id)
+            self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+            self.assertEqual(correct, output.getvalue().strip())
+
+    def testUpdateValidStringAttributeSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update BaseModel {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["BaseModel.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update User {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["User.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update State {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["State.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update City {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["City.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Amenity {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Amenity.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Review {} attr_name 'attr_value'".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Review.{}".format(test_Id)].__dict__
+        self.assertTrue("attr_value", test_dict["attr_name"])
+
+    def testUpdateValidStringAttributeDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            tId = output.getvalue().strip()
+        test_Cmd = "BaseModel.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["BaseModel.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            tId = output.getvalue().strip()
+        test_Cmd = "User.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["User.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            tId = output.getvalue().strip()
+        test_Cmd = "State.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["State.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            tId = output.getvalue().strip()
+        test_Cmd = "City.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["City.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            tId = output.getvalue().strip()
+        test_Cmd = "Place.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            tId = output.getvalue().strip()
+        test_Cmd = "Amenity.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Amenity.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            tId = output.getvalue().strip()
+        test_Cmd = "Review.update({}, attr_name, 'attr_value')".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Review.{}".format(tId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+    def testUpdateValidIntegerStringSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} max_guest 98".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(98, test_dict["max_guest"])
+
+    def testUpdateValidIntegerAttributeDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            tId = output.getvalue().strip()
+        test_Cmd = "Place.update({}, max_guest, 98)".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(tId)].__dict__
+        self.assertEqual(98, test_dict["max_guest"])
+
+    def testUpdateValidFloatAttributeSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} latitude 7.2".format(test_Id)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(7.2, test_dict["latitude"])
+
+    def testUpdateValidFloatAttributeDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            tId = output.getvalue().strip()
+        test_Cmd = "Place.update({}, latitude, 7.2)".format(tId)
+        self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
+        test_dict = storage.all()["Place.{}".format(tId)].__dict__
+        self.assertEqual(7.2, test_dict["latitude"])
+
+    def testupdateValidDictionarySpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update BaseModel {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["BaseModel.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update User {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["User.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update State {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["State.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update City {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["City.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Amenity {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Amenity.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Review {} ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'}"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Review.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+    def testUpdateValidDictionaryDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create BaseModel")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "BaseModel.update({}".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["BaseModel.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create User")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "User.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["User.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create State")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "State.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["State.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create City")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "City.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["City.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "Place.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Amenity")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "Amenity.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Amenity.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Review")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "Review.update({}, ".format(test_Id)
+        test_Cmd += "{'attr_name': 'attr_value'})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Review.{}".format(test_Id)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
+
+    def testUpdateValidDictionaryWithIntegerSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} ".format(test_Id)
+        test_Cmd += "{'max_guest': 98})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(98, test_dict["max_guest"])
+
+    def testUpdateValidDictionaryWithIntegerDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "Place.update({}, ".format(test_Id)
+        test_Cmd += "{'max_guest': 98})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(98, test_dict["max_guest"])
+
+    def testUpdateValidDictionaryWithFloatSpaceNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "update Place {} ".format(test_Id)
+        test_Cmd += "{'latitude': 9.8})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(9.8, test_dict["latitude"])
+
+    def testUpdateValidDictionaryWithFloatDotNotation(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            AirBnBCommand().onecmd("create Place")
+            test_Id = output.getvalue().strip()
+        test_Cmd = "Place.update({}, ".format(test_Id)
+        test_Cmd += "{'latitude': 9.8})"
+        AirBnBCommand().onecmd(test_Cmd)
+        test_dict = storage.all()["Place.{}".format(test_Id)].__dict__
+        self.assertEqual(9.8, test_dict["latitude"])
+
+
+class TestAirBnBCommand_count(unittest.TestCase):
+    """
+    Unit testing COUNT method of cmd interpreter.
+    """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+        FileStorage._FileStorage__objects = {}
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testCountInvalidClass(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("MyModel.count()"))
+            self.assertEqual("0", output.getvalue().strip())
+
+    def testCountObjects(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("BaseModel.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create User"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("User.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create State"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("State.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Place"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Place.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create City"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("City.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Amenity"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Amenity.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("create Review"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(AirBnBCommand().onecmd("Review.count()"))
+            self.assertEqual("1", output.getvalue().strip())
+
+
+if __name__ == "__main__":
+    unittest.main()
