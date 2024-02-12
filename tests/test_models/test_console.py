@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Class defintion for unittests
+Class defintion for unit tests
 
 
 Unittest classes:
@@ -28,10 +28,10 @@ class TestAirBnBCommand_prompt(unittest.TestCase):
     Unit tests for checking the prompt of the cmd interpreter.
     """
 
-    def test_prompt_string(self):
+    def testPromptString(self):
         self.assertEqual("(hbnb) ", AirBnBCommand.prompt)
 
-    def test_empty_line(self):
+    def testEmptyLine(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd(""))
             self.assertEqual("", output.getvalue().strip())
@@ -43,11 +43,11 @@ class TestAirBnBCommand_exit(unittest.TestCase):
     the cmd interpreter works.
     """
 
-    def test_quit_exits(self):
+    def testQuitExit(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertTrue(AirBnBCommand().onecmd("quit"))
 
-    def test_EOF_exits(self):
+    def testEOFExit(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertTrue(AirBnBCommand().onecmd("EOF"))
 
