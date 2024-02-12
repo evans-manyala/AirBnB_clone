@@ -33,7 +33,7 @@ def parser(arg):
         return re.search
 
 
-class AirBnBCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """
     Defines the AirBnB Clone cmd interpreter.
 
@@ -102,7 +102,7 @@ class AirBnBCommand(cmd.Cmd):
         arg_list = parser(arg)
         if len(arg_list) == 0:
             print("** class name missing **")
-        elif arg_list[0] not in AirBnBCommand.__classes:
+        elif arg_list[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
             print(eval(arg_list[0])().id)
@@ -116,7 +116,7 @@ class AirBnBCommand(cmd.Cmd):
         obj_dict = storage.all()
         if len(arg_list) == 0:
             print("** class name missing **")
-        elif arg_list[0] not in AirBnBCommand.__classes:
+        elif arg_list[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         elif len(arg_list) == 1:
             print("** instance id missing **")
@@ -133,7 +133,7 @@ class AirBnBCommand(cmd.Cmd):
         obj_dict = storage.all()
         if len(arg_list) == 0:
             print("** class name missing **")
-        elif arg_list[0] not in AirBnBCommand.__classes:
+        elif arg_list[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         elif len(arg_list) == 1:
             print("** instance id missing **")
@@ -148,7 +148,7 @@ class AirBnBCommand(cmd.Cmd):
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
         arg_list = parser(arg)
-        if len(arg_list) > 0 and arg_list[0] not in AirBnBCommand.__classes:
+        if len(arg_list) > 0 and arg_list[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
             objl = []
@@ -181,7 +181,7 @@ class AirBnBCommand(cmd.Cmd):
         if len(arg_list) == 0:
             print("** Class name missing **")
             return False
-        if arg_list[0] not in AirBnBCommand.__classes:
+        if arg_list[0] not in HBNBCommand.__classes:
             print("** Class does not exist **")
             return False
         if len(arg_list) == 1:
@@ -220,4 +220,4 @@ class AirBnBCommand(cmd.Cmd):
 
 
 if __name__ == "__main__":
-    AirBnBCommand().cmdloop()
+    HBNBCommand().cmdloop()
