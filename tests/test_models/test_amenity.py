@@ -96,7 +96,7 @@ class TestAmenityInstantiation(unittest.TestCase):
 
 class TestAmenitySave(unittest.TestCase):
     """
-    Unit testing for testing SAVE method of the Amenity class.
+    Unit testing for SAVE method of the Amenity class.
     """
 
     @classmethod
