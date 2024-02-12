@@ -1049,7 +1049,7 @@ class TestAirBnBCommand_update(unittest.TestCase):
             self.assertFalse(AirBnBCommand().onecmd(test_Cmd))
             self.assertEqual(correct, output.getvalue().strip())
 
-    def test_update_missing_attr_name_dot_notation(self):
+    def testUpdateMissingAttributeNameDotNotation(self):
         correct = "** Attribute name not found **"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(AirBnBCommand().onecmd("create BaseModel"))
@@ -1095,7 +1095,7 @@ class TestAirBnBCommand_update(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testUpdateMissingAttributeValueSpaceNotation(self):
-        correct = "** value missing **"
+        correct = "** Missing value **"
         with patch("sys.stdout", new=StringIO()) as output:
             AirBnBCommand().onecmd("create BaseModel")
             test_Id = output.getvalue().strip()
@@ -1147,7 +1147,7 @@ class TestAirBnBCommand_update(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def testUpdateMissingAttributeValueDotNotation(self):
-        correct = "** value missing **"
+        correct = "** Missing value **"
         with patch("sys.stdout", new=StringIO()) as output:
             AirBnBCommand().onecmd("create BaseModel")
             test_Id = output.getvalue().strip()
