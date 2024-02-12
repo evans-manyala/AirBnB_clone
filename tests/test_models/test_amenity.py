@@ -80,7 +80,8 @@ class TestAmenityInstantiation(unittest.TestCase):
         """
         dateTime = datetime.today()
         dateTime_iso = dateTime.isoformat()
-        amenity = Amenity(id="345", created_at=dateTime_iso, updated_at=dateTime_iso)
+        amenity = Amenity(id="345", created_at=dateTime_iso,
+                          updated_at=dateTime_iso)
         self.assertEqual(amenity.id, "345")
         self.assertEqual(amenity.created_at, dateTime)
         self.assertEqual(amenity.updated_at, dateTime)
