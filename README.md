@@ -161,6 +161,7 @@ $
 
 <details>
     <summary>Evans Manyala</summary>
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=04F712&random=false&width=435&lines=Evans+Manyala;DevOps+%7C+SRE+%7C+Software+Engineer" alt="Typing SVG" /></a>
     <ul>
     <li><a href="https://www.github.com/evans-Manyala">Github</a></li>
     <li><a href="https://www.twitter.com/evans_manyala">Twitter</a></li>
