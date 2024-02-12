@@ -164,9 +164,9 @@ class TestAmenityToDictionary(unittest.TestCase):
 
     def testToDictionaryContainsAddedAtrr(self):
         amenity = Amenity()
-        amenity.middle_name = "Holberton"
+        amenity.middle_name = "ALX"
         amenity.my_number = 98
-        self.assertEqual("Holberton", amenity.middle_name)
+        self.assertEqual("ALX", amenity.middle_name)
         self.assertIn("my_number", amenity.to_dict())
 
     def testToDictionaryDateTimeAttrAreStrings(self):
