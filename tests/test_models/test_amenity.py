@@ -149,7 +149,7 @@ class TestAmenitySave(unittest.TestCase):
 
 class TestAmenityToDictionary(unittest.TestCase):
     """
-    Unit testing for to_dict method of the Amenity class.
+    Unit testing for To_Dict method of the Amenity class.
     """
 
     def testToDictionaryType(self):
