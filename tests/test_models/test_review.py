@@ -14,6 +14,7 @@ from datetime import datetime
 from time import sleep
 from models.review import Review
 
+
 class TestReview_instantiation(unittest.TestCase):
     """
     Unit testing Initialization of the Review class."""
@@ -87,7 +88,8 @@ class TestReview_instantiation(unittest.TestCase):
     def testInitializationWithKwargs(self):
         dateTime = datetime.today()
         dateTime_iso = dateTime.isoformat()
-        re_view = Review(id="345", created_at=dateTime_iso, updated_at=dateTime_iso)
+        re_view = Review(id="345", created_at=dateTime_iso,
+                         updated_at=dateTime_iso)
         self.assertEqual(re_view.id, "345")
         self.assertEqual(re_view.created_at, dateTime)
         self.assertEqual(re_view.updated_at, dateTime)
