@@ -3,7 +3,7 @@
 Defines unit tests for models/amenity.py.
 
 Unittest classes:
-    TestAmenityInstantiation
+    TestAmenityInitialization
     TestAmenitySave
     TestAmenityToDictionary
 """
@@ -15,7 +15,7 @@ from time import sleep
 from models.amenity import Amenity
 
 
-class TestAmenityInstantiation(unittest.TestCase):
+class TestAmenityInitialization(unittest.TestCase):
     """
     Unit testing class instantiation.
     """

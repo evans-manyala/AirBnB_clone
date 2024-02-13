@@ -3,9 +3,9 @@
 Defines unit tests for models/review.py.
 
 Unittest classes:
-    TestPlaceInitialization
-    TestPlaceSave
-    TestPlaceToDictionary
+    TestReviewInitialization
+    TestReviewSave
+    TestReviewToDictionary
 """
 import os
 import models
