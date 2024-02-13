@@ -147,6 +147,7 @@ class TestPlaceInitialization(unittest.TestCase):
         with self.assertRaises(TypeError):
             Place(id=None, created_at=None, updated_at=None)
 
+
 class TestPlaceSave(unittest.TestCase):
     """
     Unit testing SAVE method of the Place class.
@@ -250,6 +251,7 @@ class TestPlaceToDictionary(unittest.TestCase):
         place = Place()
         with self.assertRaises(TypeError):
             place.to_dict(None)
+
 
 if __name__ == "__main__":
     unittest.main()
