@@ -15,7 +15,6 @@ from time import sleep
 from models.state import State
 
 
-
 class TestState_instantiation(unittest.TestCase):
     """
     Unit testing Initialization of the State class.
@@ -87,5 +86,3 @@ class TestState_instantiation(unittest.TestCase):
     def testInitializationWithNoneKwargs(self):
         with self.assertRaises(TypeError):
             State(id=None, created_at=None, updated_at=None)
-
-
