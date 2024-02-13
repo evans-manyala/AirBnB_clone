@@ -89,3 +89,113 @@ class TestBaseModelBaseModelInitialization(unittest.TestCase):
         self.assertEqual(baseModel.id, "345")
         self.assertEqual(baseModel.created_at, dateTime)
         self.assertEqual(baseModel.updated_at, dateTime)
+
+
+class TestBaseModelSave(unittest.TestCase):
+    """
+    Unit testing SAVE method of the BaseModel class.
+    """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testOneSave(self):
+        baseModel = BaseModel()
+        sleep(0.05)
+        first_updated_at = baseModel.updated_at
+        baseModel.save()
+        self.assertLess(first_updated_at, baseModel.updated_at)
+
+    def testTwoSaves(self):
+        baseModel = BaseModel()
+        sleep(0.05)
+        first_updated_at = baseModel.updated_at
+        baseModel.save()
+        second_updated_at = baseModel.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.05)
+        baseModel.save()
+        self.assertLess(second_updated_at, baseModel.updated_at)
+
+    def testSaveWithArguments(self):
+        baseModel = BaseModel()
+        with self.assertRaises(TypeError):
+            baseModel.save(None)
+
+    def testSaveUpdatesFile(self):
+        baseModel = BaseModel()
+        baseModel.save()
+        baseModelid = "BaseModel." + baseModel.id
+        with open("file.json", "r") as f:
+            self.assertIn(baseModelid, f.read())
+
+
+class TestBaseModelToDictionary(unittest.TestCase):
+    """
+    Unit testing ToDictionary method of the BaseModel class.
+    """
+
+    def testToDictionaryType(self):
+        baseModel = BaseModel()
+        self.assertTrue(dict, type(baseModel.to_dict()))
+
+    def testToDictionaryContainsCorrectKeys(self):
+        baseModel = BaseModel()
+        self.assertIn("id", baseModel.to_dict())
+        self.assertIn("created_at", baseModel.to_dict())
+        self.assertIn("updated_at", baseModel.to_dict())
+        self.assertIn("__class__", baseModel.to_dict())
+
+    def testToDictionaryContainsAddedAtrr(self):
+        baseModel = BaseModel()
+        baseModel.name = "Holberton"
+        baseModel.my_number = 98
+        self.assertIn("name", baseModel.to_dict())
+        self.assertIn("my_number", baseModel.to_dict())
+
+    def testToDictionaryDateTimeAttrAreStrings(self):
+        baseModel = BaseModel()
+        baseModel_dict = baseModel.to_dict()
+        self.assertEqual(str, type(baseModel_dict["created_at"]))
+        self.assertEqual(str, type(baseModel_dict["updated_at"]))
+
+    def testToDictionaryOutput(self):
+        dateTime = datetime.today()
+        baseModel = BaseModel()
+        baseModel.id = "123456"
+        baseModel.created_at = baseModel.updated_at = dateTime
+        tdict = {
+            'id': '123456',
+            '__class__': 'BaseModel',
+            'created_at': dateTime.isoformat(),
+            'updated_at': dateTime.isoformat()
+        }
+        self.assertDictEqual(baseModel.to_dict(), tdict)
+
+    def testContrastToDictionaryDunderDictionary(self):
+        baseModel = BaseModel()
+        self.assertNotEqual(baseModel.to_dict(), baseModel.__dict__)
+
+    def testToDictionaryWithArguments(self):
+        baseModel = BaseModel()
+        with self.assertRaises(TypeError):
+            baseModel.to_dict(None)
+
+
+if __name__ == "__main__":
+    unittest.main()
