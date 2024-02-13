@@ -87,6 +87,7 @@ class TestStateInitialization(unittest.TestCase):
         with self.assertRaises(TypeError):
             State(id=None, created_at=None, updated_at=None)
 
+
 class TestStateSave(unittest.TestCase):
     """
     Unit testing SAVE method of the State class.
