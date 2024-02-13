@@ -66,15 +66,15 @@ class TestCityInitialization(unittest.TestCase):
 
     def testStringRep(self):
         dateTime = datetime.today()
-        dt_repr = repr(dateTime)
+        dateTime_repr = repr(dateTime)
         city = City()
         city.id = "123456"
         city.created_at = city.updated_at = dateTime
         citystr = city.__str__()
         self.assertIn("[City] (123456)", citystr)
         self.assertIn("'id': '123456'", citystr)
-        self.assertIn("'created_at': " + dt_repr, citystr)
-        self.assertIn("'updated_at': " + dt_repr, citystr)
+        self.assertIn("'created_at': " + dateTime_repr, citystr)
+        self.assertIn("'updated_at': " + dateTime_repr, citystr)
 
     def testArgumenentsUnused(self):
         city = City(None)
@@ -82,8 +82,8 @@ class TestCityInitialization(unittest.TestCase):
 
     def testInitializationWithKwargs(self):
         dateTime = datetime.today()
-        dt_iso = dateTime.isoformat()
-        city = City(id="345", created_at=dt_iso, updated_at=dt_iso)
+        dateTime_iso = dateTime.isoformat()
+        city = City(id="345", created_at=dateTime_iso, updated_at=dateTime_iso)
         self.assertEqual(city.id, "345")
         self.assertEqual(city.created_at, dateTime)
         self.assertEqual(city.updated_at, dateTime)
@@ -122,7 +122,7 @@ class TestCitySave(unittest.TestCase):
         city.save()
         self.assertLess(first_updated_at, city.updated_at)
 
-    def tesTwoSaves(self):
+    def testTwoSaves(self):
         city = City()
         sleep(0.05)
         first_updated_at = city.updated_at
@@ -144,3 +144,59 @@ class TestCitySave(unittest.TestCase):
         cityid = "City." + city.id
         with open("file.json", "r") as f:
             self.assertIn(cityid, f.read())
+
+
+class TestCityToDictionary(unittest.TestCase):
+    """
+    Unit testing ToDictionary method of the City class.
+    """
+
+    def testToDictionaryType(self):
+        self.assertTrue(dict, type(City().to_dict()))
+
+    def testToDictionaryContainsCorrectKeys(self):
+        city = City()
+        self.assertIn("id", city.to_dict())
+        self.assertIn("created_at", city.to_dict())
+        self.assertIn("updated_at", city.to_dict())
+        self.assertIn("__class__", city.to_dict())
+
+    def testToDictionaryContainsAddedAttributes(self):
+        city = City()
+        city.middle_name = "Holberton"
+        city.my_number = 98
+        self.assertEqual("Holberton", city.middle_name)
+        self.assertIn("my_number", city.to_dict())
+
+    def testToDictionaryDateTimeAttrrtStrs(self):
+        city = City()
+        city_dict = city.to_dict()
+        self.assertEqual(str, type(city_dict["id"]))
+        self.assertEqual(str, type(city_dict["created_at"]))
+        self.assertEqual(str, type(city_dict["updated_at"]))
+
+    def testToDictionaryOutput(self):
+        dateTime = datetime.today()
+        city = City()
+        city.id = "123456"
+        city.created_at = city.updated_at = dateTime
+        tdict = {
+            'id': '123456',
+            '__class__': 'City',
+            'created_at': dateTime.isoformat(),
+            'updated_at': dateTime.isoformat(),
+        }
+        self.assertDictEqual(city.to_dict(), tdict)
+
+    def testContrastToDictionaryDunderDictionary(self):
+        city = City()
+        self.assertNotEqual(city.to_dict(), city.__dict__)
+
+    def testToDictionaryWithArg(self):
+        city = City()
+        with self.assertRaises(TypeError):
+            city.to_dict(None)
+
+
+if __name__ == "__main__":
+    unittest.main()
