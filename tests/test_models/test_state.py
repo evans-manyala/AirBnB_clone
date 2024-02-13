@@ -15,7 +15,7 @@ from time import sleep
 from models.state import State
 
 
-class TestState_instantiation(unittest.TestCase):
+class TestStateInitialization(unittest.TestCase):
     """
     Unit testing Initialization of the State class.
     """
@@ -86,3 +86,111 @@ class TestState_instantiation(unittest.TestCase):
     def testInitializationWithNoneKwargs(self):
         with self.assertRaises(TypeError):
             State(id=None, created_at=None, updated_at=None)
+
+class TestStateSave(unittest.TestCase):
+    """
+    Unit testing SAVE method of the State class.
+    """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testOneSave(self):
+        state = State()
+        sleep(0.05)
+        first_updated_at = state.updated_at
+        state.save()
+        self.assertLess(first_updated_at, state.updated_at)
+
+    def testTwoSaves(self):
+        state = State()
+        sleep(0.05)
+        first_updated_at = state.updated_at
+        state.save()
+        second_updated_at = state.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.05)
+        state.save()
+        self.assertLess(second_updated_at, state.updated_at)
+
+    def testSaveWithArg(self):
+        state = State()
+        with self.assertRaises(TypeError):
+            state.save(None)
+
+    def testSaveUpdatesFile(self):
+        state = State()
+        state.save()
+        stid = "State." + state.id
+        with open("file.json", "r") as f:
+            self.assertIn(stid, f.read())
+
+
+class TestStateToDictionary(unittest.TestCase):
+    """
+    Unit testing ToDictionary method of the State class.
+    """
+
+    def testToDictionaryType(self):
+        self.assertTrue(dict, type(State().to_dict()))
+
+    def testToDictionaryContainsCorrectKeys(self):
+        state = State()
+        self.assertIn("id", state.to_dict())
+        self.assertIn("created_at", state.to_dict())
+        self.assertIn("updated_at", state.to_dict())
+        self.assertIn("__class__", state.to_dict())
+
+    def testToDictionaryContainsAddedAttr(self):
+        state = State()
+        state.middle_name = "Holberton"
+        state.my_number = 98
+        self.assertEqual("Holberton", state.middle_name)
+        self.assertIn("my_number", state.to_dict())
+
+    def testToDictionaryDateTimeAttrAreStrings(self):
+        state = State()
+        st_dict = state.to_dict()
+        self.assertEqual(str, type(st_dict["id"]))
+        self.assertEqual(str, type(st_dict["created_at"]))
+        self.assertEqual(str, type(st_dict["updated_at"]))
+
+    def testToDictionaryOutput(self):
+        dateTime = datetime.today()
+        state = State()
+        state.id = "123456"
+        state.created_at = state.updated_at = dateTime
+        tdict = {
+            'id': '123456',
+            '__class__': 'State',
+            'created_at': dateTime.isoformat(),
+            'updated_at': dateTime.isoformat(),
+        }
+        self.assertDictEqual(state.to_dict(), tdict)
+
+    def testContrastToDictionaryDunderDict(self):
+        state = State()
+        self.assertNotEqual(state.to_dict(), state.__dict__)
+
+    def testToDictionaryWith_arg(self):
+        state = State()
+        with self.assertRaises(TypeError):
+            state.to_dict(None)
+
+
+if __name__ == "__main__":
+    unittest.main()
