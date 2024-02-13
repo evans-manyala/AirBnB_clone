@@ -43,6 +43,7 @@ class TestFileStorageInitialization(unittest.TestCase):
     def testStorageInitialization(self):
         self.assertEqual(type(models.storage), FileStorage)
 
+
 class TestFileStorageMethods(unittest.TestCase):
     """
     Unit testing methods of the FileStorage class.
@@ -82,7 +83,7 @@ class TestFileStorageMethods(unittest.TestCase):
         city = City()
         amenity = Amenity()
         review = Review()
-    
+
         models.storage.new(baseModel)
         models.storage.new(user)
         models.storage.new(state)
