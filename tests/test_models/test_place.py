@@ -120,15 +120,15 @@ class TestPlaceInitialization(unittest.TestCase):
 
     def testStringRepresentation(self):
         dateTime = datetime.today()
-        dt_repr = repr(dateTime)
+        dateTime_repr = repr(dateTime)
         place = Place()
         place.id = "123456"
         place.created_at = place.updated_at = dateTime
         plstr = place.__str__()
         self.assertIn("[Place] (123456)", plstr)
         self.assertIn("'id': '123456'", plstr)
-        self.assertIn("'created_at': " + dt_repr, plstr)
-        self.assertIn("'updated_at': " + dt_repr, plstr)
+        self.assertIn("'created_at': " + dateTime_repr, plstr)
+        self.assertIn("'updated_at': " + dateTime_repr, plstr)
 
     def testArgsUnused(self):
         place = Place(None)
@@ -146,3 +146,110 @@ class TestPlaceInitialization(unittest.TestCase):
     def testInitializationWithNoneKwargs(self):
         with self.assertRaises(TypeError):
             Place(id=None, created_at=None, updated_at=None)
+
+class TestPlaceSave(unittest.TestCase):
+    """
+    Unit testing SAVE method of the Place class.
+    """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def testOneSave(self):
+        place = Place()
+        sleep(0.05)
+        first_updated_at = place.updated_at
+        place.save()
+        self.assertLess(first_updated_at, place.updated_at)
+
+    def testTwoSaves(self):
+        place = Place()
+        sleep(0.05)
+        first_updated_at = place.updated_at
+        place.save()
+        second_updated_at = place.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.05)
+        place.save()
+        self.assertLess(second_updated_at, place.updated_at)
+
+    def testSaveWithArgs(self):
+        place = Place()
+        with self.assertRaises(TypeError):
+            place.save(None)
+
+    def testSaveUpdatesFile(self):
+        place = Place()
+        place.save()
+        placeID = "Place." + place.id
+        with open("file.json", "r") as f:
+            self.assertIn(placeID, f.read())
+
+
+class TestPlaceToDictionary(unittest.TestCase):
+    """
+    Unit testing ToDictionary method of the Place class.
+    """
+
+    def testToDictionaryType(self):
+        self.assertTrue(dict, type(Place().to_dict()))
+
+    def testToDictionaryContainsCorrectKeys(self):
+        place = Place()
+        self.assertIn("id", place.to_dict())
+        self.assertIn("created_at", place.to_dict())
+        self.assertIn("updated_at", place.to_dict())
+        self.assertIn("__class__", place.to_dict())
+
+    def testToDictionaryContainsAddedAttr(self):
+        place = Place()
+        place.middle_name = "Holberton"
+        place.my_number = 98
+        self.assertEqual("Holberton", place.middle_name)
+        self.assertIn("my_number", place.to_dict())
+
+    def testToDictionaryDateTimeAttrAreStrings(self):
+        place = Place()
+        place_dict = place.to_dict()
+        self.assertEqual(str, type(place_dict["id"]))
+        self.assertEqual(str, type(place_dict["created_at"]))
+        self.assertEqual(str, type(place_dict["updated_at"]))
+
+    def testToDictionaryOutput(self):
+        dateTime = datetime.today()
+        place = Place()
+        place.id = "123456"
+        place.created_at = place.updated_at = dateTime
+        tdict = {
+            'id': '123456',
+            '__class__': 'Place',
+            'created_at': dateTime.isoformat(),
+            'updated_at': dateTime.isoformat(),
+        }
+        self.assertDictEqual(place.to_dict(), tdict)
+
+    def testContrastToDictionaryDunderDictionary(self):
+        place = Place()
+        self.assertNotEqual(place.to_dict(), place.__dict__)
+
+    def testToDictionaryWithArgs(self):
+        place = Place()
+        with self.assertRaises(TypeError):
+            place.to_dict(None)
+
+if __name__ == "__main__":
+    unittest.main()
