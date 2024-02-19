@@ -8,5 +8,6 @@ header {
 }
 
 .logo {
-  margin-left: 20px; /* Note: you must have a logo image class named "logo" */
+  height: 50px; /* Adjust height when needed */
+  margin-left: 20px; /* Adjust margin when needed */
 }
