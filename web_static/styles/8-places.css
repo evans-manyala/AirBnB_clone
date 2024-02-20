@@ -1,6 +1,6 @@
 /* Adjust the font-size for both h1 and h2 in the places section */
 .places h1,
-h2 {
+.places h2 {
     font-size: 30px;
 }
 
@@ -26,28 +26,25 @@ h2 {
     border-radius: 4px;
 }
 
-
 .places li:last-of-type {
-    padding-left: 200px;
+    /* Adjust the padding based on your design */
+    padding-left: 20px;
     margin-bottom: 4rem;
 }
 
 .price_by_night {
-    color: #ff5a5f;
-    border: 4px solid #ff5a5f;
-    border-radius: 100%;
-    min-width: 60px;
-    height: 50px;
-    font-size: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -05%;
-    left: 55%;
-    width: 80px;
-    padding: 50px;
+  color: #ff5a5f;
+  border: 4px solid #ff5a5f;
+  border-radius: 50%;
+  width: 60px;  /* Adjusted width to match the min-width */
+  height: 60px;
+  font-size: 20px;
+  text-align: center; /* Adjusted text-align for centering */
+  line-height: 60px;  /* Adjusted line-height for vertical centering */
+  margin-top: -5%;
+  margin-left: auto;
 }
+
 
 .information {
     height: 80px;
@@ -57,7 +54,6 @@ h2 {
     justify-content: center;
     flex-wrap: wrap;
 }
-
 
 .max_guest,
 .number_rooms,
